@@ -29,8 +29,8 @@ export const CounterScreen = () => {
 				</Button>
 			</View> */}
 
-			<FAB label="+1" style={globalStyles.fabRight} onPress={() => changeNum(+1)} />
-			<FAB label="-1" style={globalStyles.fabLeft} onPress={() => changeNum(-1)} />
+			<FAB icon="add-outline" style={globalStyles.fabRight} onPress={() => changeNum(+1)} />
+			<FAB icon="remove-outline" style={globalStyles.fabLeft} onPress={() => changeNum(-1)} />
 		</View>
 	);
 };
