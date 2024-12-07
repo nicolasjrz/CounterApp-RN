@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import { FAB } from 'react-native-paper';
+import { globalStyles } from '../theme/globals.styles';
 
 export const CounterScreen = () => {
 	const [num, setNum] = useState(0);
@@ -14,43 +16,21 @@ export const CounterScreen = () => {
 	};
 
 	return (
-		<View style={styles.container}>
-			<Text style={styles.title}>{num}</Text>
+		<View style={globalStyles.centerConteiner}>
+			<Text style={globalStyles.title}>{num} cm</Text>
 
-			<View>
-				<Pressable onPress={() => changeNum(+1)} style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}>
-					<Text style={styles.text}>+1</Text>
-				</Pressable>
+			{/* <View>
+				<Button onPress={() => changeNum(+1)} style={[globalStyles.button]} mode="contained">
+					<Text style={globalStyles.text}>+1</Text>
+				</Button>
 
-				<Pressable onPress={() => changeNum(-1)} style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}>
-					<Text style={styles.text}>-1</Text>
-				</Pressable>
-			</View>
+				<Button onPress={() => changeNum(-1)} style={[globalStyles.button]} mode="contained">
+					<Text style={globalStyles.text}>-1</Text>
+				</Button>
+			</View> */}
+
+			<FAB label="+1" style={globalStyles.fabRight} onPress={() => changeNum(+1)} />
+			<FAB label="-1" style={globalStyles.fabLeft} onPress={() => changeNum(-1)} />
 		</View>
 	);
 };
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center',
-		alignItems: 'center',
-	},
-	title: {
-		fontSize: 80,
-		textAlign: 'center',
-		color: 'black',
-		fontWeight: 300,
-	},
-	button: {
-		backgroundColor: '#5856D6',
-		paddingHorizontal: 20,
-		paddingVertical: 10,
-		borderRadius: 10,
-	},
-	buttonPressed: { backgroundColor: '#4746AB' },
-	text: {
-		color: 'white',
-		fontSize: 14,
-	},
-});
